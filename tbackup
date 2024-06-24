@@ -72,7 +72,7 @@ create_configuration() {
 # Set up tar filters
 setup_filters() {
     local filters_file="$CONFIG_DIR/filters"
-    if [ ! -f "$filters_file" ]; then
+    if [ ! -f "$filters_file" ];mv then
         echo -e "${YELLOW}Setting up filters for tar...${NC}"
         touch "$filters_file"
         echo -e "${GREEN}Filters file created at $filters_file${NC}"
@@ -83,9 +83,15 @@ setup_filters() {
             ["$HOME/.local/Trash"]="Trash directory"
             ["$HOME/.steam"]="Steam game files"
             ["$HOME/Downloads"]="Downloads directory"
-            ["$HOME/sync"]="Sync directory"
-            ["$HOME/vm"]="Virtual machines directory"
+            ["$HOME/Syncthing"]="Syncthing directory"
+            ["$HOME/Virtualmachines"]="Virtual machines directory"
             ["$HOME/Nextcloud"]="Nextcloud directory"
+            ["$HOME/.var/app/org.chromium.Chromium/cache"]="Chromium flatpak cache (1/2)"
+            ["$HOME/.var/app/org.chromium.Chromium/common/.cache"]="Chromium flatpak cache (2/2)"
+            ["$HOME/.var/app/org.mozilla.firefox/cache"]="Firefox flatpak cache (1/2)"
+            ["$HOME/.var/app/org.mozilla.firefox/common/.cache"]="Firefox flatpak cache (2/2)"
+            ["$HOME/.var/app/com.discordapp.Discord/cache"]="Discord flatpak cache (1/2)"
+            ["$HOME/.var/app/com.discordapp.Discord/common/.cache"]="Discord flatpak scache (2/2)"
         )
 
         for dir in "${!default_excludes[@]}"; do
